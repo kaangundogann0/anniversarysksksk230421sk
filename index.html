@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5. Yıl Dönümümüz</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Falling Petals Container -->
+  <div id="falling-petals"></div>
+
+  <!-- Hidden YouTube Player Anchor -->
+  <div id="player" style="position: absolute; top: -9999px; left: -9999px;"></div>
+
+  <!-- Entry Overlay -->
+  <div id="entry-overlay">
+    <div class="entry-content">
+      <h1>Birlikte Geçen 5 Yıl</h1>
+      <p>Sesin açık olduğundan emin ol...</p>
+      <button id="start-btn">Başlamak İçin Dokun</button>
+    </div>
+  </div>
+
+  <!-- Main Content Wrap -->
+  <div id="main-content" style="opacity: 0; pointer-events: none; transition: opacity 2s ease;">
+    <!-- Flower Field Section (100vh) -->
+    <section id="hero-section">
+      <canvas id="flower-canvas"></canvas>
+      <div id="message-overlay" class="hidden">
+        <h2>1826 gündür</h2>
+        <h3>birlikteyiz...</h3>
+        <div class="scroll-prompt">
+          <span>Aşağı Kaydır</span>
+          <div class="mouse"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery-section">
+      <div class="gallery-container">
+
+        <div class="gallery-item fade-in-up">
+          <div class="photo-frame">
+            <!-- Puts placeholder image, user can replace src -->
+            <img src="photos/media__1776891508342.jpg" alt="Anı 1">
+          </div>
+          <div class="photo-caption">
+            <p>İlk buluşmamız. O güzel kokunu aldığım sana doya doya sarıldığım ilk gün...</p>
+          </div>
+        </div>
+
+        <div class="gallery-item reverse fade-in-up">
+          <div class="photo-frame">
+            <img src="photos/media__1776892751908.jpg" alt="Anı 2">
+          </div>
+          <div class="photo-caption">
+            <p>Ne de güzel yazıyosun öyle ( benim seninle ilgili herhangi bir şeye aşık oluş )</p>
+          </div>
+        </div>
+
+        <div class="gallery-item fade-in-up">
+          <div class="photo-frame">
+            <img src="photos/media__1776892751912.jpg" alt="Anı 3">
+          </div>
+          <div class="photo-caption">
+            <p>Pinterest fotosu gibi fotomuz</p>
+          </div>
+        </div>
+
+        <div class="gallery-item reverse fade-in-up">
+          <div class="photo-frame">
+            <img src="photos/media__1776891508331.jpg" alt="Anı 4">
+          </div>
+          <div class="photo-caption">
+            <p>Çiçeğime çiçek almışım :b ( bu fotoğrafımızı baya seviyorum )</p>
+          </div>
+        </div>
+
+        <div class="gallery-item fade-in-up">
+          <div class="photo-frame">
+            <img src="photos/media__1776891508351.jpg" alt="Anı 5">
+          </div>
+          <div class="photo-caption">
+            <p>Çok tatlış yatmışsın ya yerim</p>
+          </div>
+        </div>
+
+        <div class="gallery-item reverse fade-in-up">
+          <div class="photo-frame">
+            <img src="photos/media__1776891508360.jpg" alt="Anı 6">
+          </div>
+          <div class="photo-caption">
+            <p>😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘😘
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-item fade-in-up">
+          <div class="photo-frame">
+            <img src="photos/media__1776891508369.jpg" alt="Anı 7">
+          </div>
+          <div class="photo-caption">
+            <p>Pamukkale gezimizzzzzzzzz</p>
+          </div>
+        </div>
+
+        <div class="gallery-item reverse fade-in-up">
+          <div class="photo-frame">
+            <img src="photos/media__1776891654427.jpg" alt="Anı 8">
+          </div>
+          <div class="photo-caption">
+            <p>Bunda da güzel çıkmışız haa ( içinde olduğun bir fotoğrafın kötü olma ihtimali yok)</p>
+          </div>
+        </div>
+        <div class="gallery-footer">
+          <h2>Daha bir sürü anı... Fotoğraf pek çekilmiyoruz ama seninle her anımız her zaman kalbimde. Bazı
+            fotoğrafları aradım ama bulamadım:( Seni Çok Seviyorum 5. Yılımız kutlu olsun sevgilim❤️ ...</h2>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
