@@ -79,7 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ================= FLOWER CANVAS ANIMATION ================= //
 
-    const TOTAL_FLOWERS = 1826;
+    const startDate = new Date('2021-04-23T00:00:00');
+    const today = new Date();
+    const diffTime = Math.abs(today - startDate);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    document.getElementById('days-counter').innerText = `${diffDays} gündür`;
+
+    const TOTAL_FLOWERS = diffDays;
     const flowers = [];
     const colors = [
         'rgba(214, 100, 118, 0.9)', // primary pink/red
@@ -162,6 +169,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const confettis = [];
+    let confettiTriggered = false;
+
+    class ConfettiParticle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.size = Math.random() * 8 + 4;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 12 + 4;
+            this.vx = Math.cos(angle) * velocity;
+            this.vy = Math.sin(angle) * velocity;
+            this.gravity = 0.4;
+            this.drag = 0.96;
+            this.rotation = Math.random() * 360;
+            this.rotationSpeed = (Math.random() - 0.5) * 20;
+            this.isRound = Math.random() > 0.5;
+        }
+
+        draw() {
+            this.vx *= this.drag;
+            this.vy *= this.drag;
+            this.vy += this.gravity;
+            this.x += this.vx;
+            this.y += this.vy;
+            this.rotation += this.rotationSpeed;
+
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation * Math.PI / 180);
+            ctx.fillStyle = this.color;
+            if (this.isRound) {
+                ctx.beginPath();
+                ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+            }
+            ctx.restore();
+        }
+    }
+
+    function triggerConfetti() {
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+        for (let i = 0; i < 80; i++) {
+            confettis.push(new ConfettiParticle(cx, cy));
+        }
+    }
+
     function startAnimations() {
         // Init all flowers
         for (let i = 0; i < TOTAL_FLOWERS; i++) {
@@ -169,25 +227,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Animation Loop
-        let lastTime = 0;
         function animate(timestamp) {
             ctx.clearRect(0, 0, canvas.width, canvas.height); // clear for next frame
 
-            // Draw a subtle gradient background or allow CSS background to show.
-            // We are just clearing so CSS background shows.
-
-            let allBloomed = true;
             flowers.forEach(f => {
                 f.draw(timestamp);
-                if (f.size < f.targetSize) {
-                    allBloomed = false;
-                }
             });
+
+            // Draw Confettis
+            for (let i = confettis.length - 1; i >= 0; i--) {
+                confettis[i].draw();
+                if (confettis[i].y > canvas.height + 20) {
+                    confettis.splice(i, 1);
+                }
+            }
 
             // Show message once all or most flowers have started blooming.
             if (timestamp > 3500 && messageOverlay.classList.contains('hidden')) {
                 messageOverlay.classList.remove('hidden');
                 messageOverlay.classList.add('visible');
+            }
+
+            // Pop confetti slightly after the text starts showing
+            if (timestamp > 4200 && !confettiTriggered) {
+                confettiTriggered = true;
+                triggerConfetti();
             }
 
             requestAnimationFrame(animate);
