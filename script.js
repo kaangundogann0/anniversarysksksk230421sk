@@ -93,7 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'rgba(255, 183, 178, 0.9)', // secondary light pink
         'rgba(235, 138, 144, 0.9)',
         'rgba(255, 203, 203, 0.9)',
-        'rgba(250, 240, 240, 0.9)' // very light pink/white
+        'rgba(250, 240, 240, 0.9)', // very light pink/white
+        'rgba(117, 51, 214, 0.9)',
+        'rgba(104, 91, 199, 0.9)'
     ];
 
     class Flower {
