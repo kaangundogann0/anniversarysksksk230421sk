@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'rgba(235, 138, 144, 0.9)',
         'rgba(255, 203, 203, 0.9)',
         'rgba(250, 240, 240, 0.9)', // very light pink/white
-        'rgba(117, 51, 214, 0.9)',
+        'rgba(151, 94, 237, 0.9)',
         'rgba(104, 91, 199, 0.9)'
     ];
 
