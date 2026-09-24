@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Create new petals constantly
-        setInterval(createPetal, 400); // 400ms interval for a rich petal shower
+        setInterval(createPetal, 100); // 100ms interval for a richer petal shower
     }
 
     // ================= SCROLL ANIMATIONS ================= //
